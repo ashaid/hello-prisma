@@ -163,6 +163,47 @@ app.post("user/:id/profile", async (req, res) => {
   res.json(profile);
 });
 
+// Create a new profile for an existing user
+
+/* const profile = await prisma.profile.create({
+//   data: {
+//     bio: 'Hello World',
+//     user: {
+//       connect: { email: 'alice@prisma.io' },
+//     },
+//   },
+// })
+*/
+
+// Create a new user with a new profile
+
+/* const user = await prisma.user.create({
+//   data: {
+//     email: 'john@prisma.io',
+//     name: 'John',
+//     profile: {
+//       create: {
+//         bio: 'Hello World',
+//       },
+//     },
+//   },
+// })
+*/
+
+// Update the profile of an existing user
+
+/* const userWithUpdatedProfile = await prisma.user.update({
+//   where: { email: 'alice@prisma.io' },
+//   data: {
+//     profile: {
+//       update: {
+//         bio: 'Hello Friends',
+//       },
+//     },
+//   },
+// })
+*/
+
 const server = app.listen(3000, () =>
   console.log(`
 🚀 Server ready at: http://localhost:3000
