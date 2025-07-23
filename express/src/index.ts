@@ -65,13 +65,15 @@ app.put("/publish/:id", async (req, res) => {
     const postData = await prisma.post.findUnique({
       where: { id: Number(id) },
       select: {
-        published: true,
+        published: true, // only grabbing published field
       },
     });
 
+    console.log(postData);
+
     const updatedPost = await prisma.post.update({
       where: { id: Number(id) || undefined },
-      data: { published: !postData?.published },
+      data: { published: !postData?.published }, // toggle published field
     });
     res.json(updatedPost);
   } catch (error) {
@@ -134,7 +136,7 @@ app.get("/feed", async (req, res) => {
     },
     include: { author: true },
     take: Number(take) || undefined,
-    skip: Number(skip) || undefined,
+    skip: Number(skip) || undefined, // how many of the returned objects in the list should be skipped
     orderBy: {
       updatedAt: orderBy as Prisma.SortOrder,
     },
